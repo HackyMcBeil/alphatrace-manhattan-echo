@@ -1,0 +1,189 @@
+:root {
+    --white-soft: rgba(255, 255, 255, 0.9);
+    --white-outline: rgba(255, 255, 255, 0.15);
+    --glass-fill: rgba(0, 0, 0, 0.65);
+    --accent-blue: #0088ff;
+    --glow-shadow: 0 0 15px rgba(0, 136, 255, 0.4);
+    --error: #ff3333;
+    --success: #00ff88;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: #000;
+    color: var(--white-soft);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+#background-container { position: fixed; inset: 0; z-index: -1; }
+#background-image { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4); }
+
+.glass-card {
+    background: var(--glass-fill);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid var(--white-outline);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+#main-wrapper { max-width: 700px; margin: 0 auto; padding: 40px 20px; transition: opacity 1s ease; }
+
+#top-bar { display: flex; justify-content: space-between; align-items: center; padding: 15px 25px; margin-bottom: 30px; }
+.logo-text { font-size: 1.2rem; letter-spacing: 4px; font-weight: 800; text-transform: uppercase; margin: 0; }
+.logo-text span { color: var(--accent-blue); }
+
+#start-overlay { position: fixed; inset: 0; z-index: 999; display: flex; justify-content: center; align-items: center; padding: 20px; }
+.start-box { max-width: 450px; width: 100%; padding: 50px 40px; text-align: center; }
+
+.sub-header { font-size: 0.7rem; letter-spacing: 3px; opacity: 0.6; margin-bottom: 5px; }
+.warning-zone { margin: 25px 0; padding: 15px; border-top: 1px solid rgba(255,255,255,0.1); }
+.warning-text { color: var(--error); font-weight: 800; font-size: 0.8rem; letter-spacing: 1px; }
+.log-text { font-size: 0.6rem; opacity: 0.4; font-family: 'JetBrains Mono'; margin-top: 5px; }
+
+.info-block { padding: 25px; margin-bottom: 25px; }
+.briefing-text p { font-size: 0.85rem; line-height: 1.6; opacity: 0.8; margin-bottom: 10px; }
+.briefing-text ol { font-size: 0.85rem; opacity: 0.8; padding-left: 20px; line-height: 1.7; }
+
+.riddle-card { overflow: hidden; margin-bottom: 30px; }
+.riddle-img { width: 100%; height: 200px; background-size: cover; background-position: center; border-bottom: 1px solid var(--white-outline); }
+.card-content { padding: 25px; }
+
+.sector-id { font-family: 'JetBrains Mono'; font-size: 0.65rem; color: var(--accent-blue); display: block; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+.description { font-size: 0.85rem; line-height: 1.5; margin-bottom: 20px; border-left: 2px solid var(--accent-blue); padding-left: 15px; }
+
+.input-label { font-size: 0.8rem; display: block; margin-bottom: 10px; opacity: 0.9; }
+
+input[type="text"] {
+    width: 100%; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--white-outline);
+    border-radius: 10px; padding: 14px; color: white; margin-bottom: 15px; font-family: 'JetBrains Mono'; outline: none; transition: 0.3s;
+}
+input[type="text"]:focus { border-color: var(--accent-blue); background: rgba(255, 255, 255, 0.1); }
+
+.glow-blue {
+    background: var(--accent-blue); color: white; border: none; padding: 14px; border-radius: 10px;
+    font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;
+    transition: all 0.3s ease; box-shadow: var(--glow-shadow);
+}
+.glow-blue:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(0, 136, 255, 0.7); background: #0099ff; }
+
+/* Grundzustand: Nur der leuchtende Rahmen */
+.nav-btn {
+    background: transparent;          /* Nicht ausgefüllt */
+    border: 1px solid var(--accent-blue); /* Blauer Rahmen */
+    color: var(--accent-blue);        /* Blaue Schrift */
+    padding: 8px 15px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;        /* Sanfter Übergang */
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 136, 255, 0.2); /* Leichter Glow außen */
+    outline: none;
+}
+
+/* Hover-Zustand (wenn man mit der Maus drüberfährt) */
+.nav-btn:hover {
+    box-shadow: 0 0 15px var(--accent-blue);
+    color: var(--white-soft);
+}
+
+/* Der "Klick"-Effekt: Kurz blau ausgefüllt */
+.nav-btn:active {
+    background: var(--accent-blue);   /* Blau füllen */
+    color: #000;                      /* Schrift schwarz für Kontrast */
+    box-shadow: 0 0 20px var(--accent-blue);
+    transform: scale(0.95);           /* Button drückt sich leicht ein */
+}
+
+/* Korrektur für das Handy-Layout (rechtsbündig untereinander) */
+header nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+@media (min-width: 600px) {
+    header nav {
+        flex-direction: row;
+        gap: 15px;
+    }
+}
+
+@media (min-width: 600px) {
+    .nav-btn {
+        font-size: 0.9rem;     /* Auf Desktop wieder normal */
+        padding: 10px 20px;
+    }
+}
+
+/* Container für die Navigation */
+header nav {
+    display: flex;
+    flex-direction: row;      /* Immer nebeneinander */
+    justify-content: flex-end; /* Rechtsbündig ausrichten */
+    align-items: center;
+    gap: 8px;                 /* Kompakter Abstand für Handys */
+    flex-wrap: nowrap;        /* Kein Umbruch erlaubt */
+}
+
+/* Der Button-Style: Leuchtender Rahmen, hohl */
+.nav-btn {
+    background: transparent;
+    border: 1px solid var(--accent-blue);
+    color: var(--accent-blue);
+    padding: 6px 12px;        /* Kompakteres Padding */
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;        /* Etwas kleinere Schrift für Mobile-First */
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 136, 255, 0.3);
+    white-space: nowrap;      /* Text darf nicht umbrechen */
+}
+
+/* Hover-Effekt (Desktop) */
+.nav-btn:hover {
+    box-shadow: 0 0 15px var(--accent-blue);
+    border-color: #55b4ff;    /* Rahmen wird etwas heller */
+}
+
+/* Klick-Effekt: Kurz blau ausgefüllt */
+.nav-btn:active {
+    background: var(--accent-blue);   /* Füllen bei Klick */
+    color: #000;                      /* Schrift schwarz für Kontrast */
+    box-shadow: 0 0 20px var(--accent-blue);
+    transform: scale(0.95);           /* Haptisches Feedback */
+}
+
+/* Anpassung für größere Bildschirme (Desktop) */
+@media (min-width: 600px) {
+    header nav {
+        gap: 15px;            /* Mehr Platz auf Desktop */
+    }
+    .nav-btn {
+        padding: 8px 18px;
+        font-size: 0.85rem;    /* Normalgröße auf Desktop */
+    }
+}
+
+/* Erzeugt das blaue Ausfüllen für den aktiven Button */
+.nav-btn.active {
+    background: var(--accent-blue) !important;
+    color: #000 !important;
+    box-shadow: 0 0 15px var(--accent-blue);
+}
+
+.feedback-message { margin-top: 15px; padding: 12px; border-radius: 8px; font-family: 'JetBrains Mono'; font-size: 0.75rem; line-height: 1.4; display: none; background: rgba(0,0,0,0.3); border-left: 4px solid transparent; }
+.status-granted { border-left-color: var(--success); }
+.status-denied { border-left-color: var(--error); }
+
+#final-analysis-overlay { position: fixed; inset: 0; z-index: 1000; background: #000; display: flex; justify-content: center; align-items: center; }
+#loading-bar-bg { width: 100%; height: 4px; background: rgba(255,255,255,0.1); margin: 20px 0; }
+#loading-bar { height: 100%; background: var(--accent-blue); width: 0%; transition: width 0.1s linear; }
