@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALPHA TRACE // CRIME INVESTIGATION TERMINAL</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="background-container">
+    <img src="hintergrund.jpg" id="background-image" alt="Background">
+    <div id="dimmer-overlay"></div>
+</div>
+
+<audio id="agent-audio" src="musik.mp3" loop></audio>
+<audio id="victory-audio" src="victory.mp3"></audio>
+<audio id="correct-audio" src="correct.wav"></audio>
+<audio id="wrong1-audio" src="wrong.wav"></audio>
+<audio id="wrong2-audio" src="wrong2.wav"></audio>
+
+<div id="start-overlay">
+    <div class="glass-card start-box">
+        <h2 class="sub-header">DIRECTORATE OF COVERT OPERATIONS</h2>
+        <h1 class="logo-text">CRIME <span>TERMINAL</span></h1>
+        <div class="warning-zone">
+            <p class="warning-text">ZUGANG NUR FÜR AUTORISIERTE ERMITTLER</p>
+            <p class="log-text">Unbefugter Zugriff wird protokolliert.</p>
+        </div>
+        <button id="start-mission-button" class="action-btn glow-blue">INITIALIZE LOGIN</button>
+    </div>
+</div>
+
+<div id="main-wrapper" style="opacity: 0; display: none;">
+    <header id="top-bar" class="glass-card">
+        <h1 class="logo-text">ALPHA <span>TRACE</span></h1>
+        <nav>
+            <button id="btn-terminal" onclick="showView('terminal-view')" class="nav-btn active">TERMINAL</button>
+            <button id="btn-database" onclick="showView('database-view')" class="nav-btn">DATABASE</button>
+        </nav>
+    </header>
+
+    <main id="terminal-view" class="view-section">
+        <div class="glass-card info-block">
+            <span class="sector-id">🔻 EINLEITUNG / ERMITTLUNGSBRIEFING</span>
+            <div class="briefing-text">
+                <div style="margin-bottom: 20px; border-bottom: 1px solid rgba(0, 136, 255, 0.3); padding-bottom: 10px;">
+                    <p style="font-family: 'JetBrains Mono'; color: var(--success); font-weight: 800; margin: 0;">
+                        [ STATUS: LOGIN VERIFIZIERT ]
+                    </p>
+                </div>
+
+                <h4 style="color: var(--accent-blue); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;">
+                    Einsatzakte: MANHATTAN ECHO
+                </h4>
+
+                <p style="margin-bottom: 15px; line-height: 1.6;">
+                    Agent, Sie wurden dem laufenden Ermittlungsfall zugewiesen. Die Behörde untersucht einen hochprofessionellen
+                    <strong>Überfall auf eine Investmentbank im Raum Manhattan</strong>.
+                </p>
+
+                <div style="background: rgba(0, 136, 255, 0.05); border-left: 2px solid var(--accent-blue); padding: 10px 15px; margin-bottom: 15px;">
+                    <p style="margin: 0; font-size: 0.9rem; line-height: 1.5;">
+                        <strong>GESICHERTE BEWEISMITTEL:</strong><br>
+                        Im Zuge der Fluchtbewegungen wurden <strong>fünf visuelle Beweisstücke</strong> aus öffentlich zugänglichen Quellen gesichert.
+                        Diese dokumentieren entscheidende Orte, Fahrzeuge und Rückzugsräume der Tätergruppe.
+                    </p>
+                </div>
+
+                <p style="color: var(--error); font-weight: 600; font-size: 0.9rem; margin: 0;">
+                    ⚠️ WARNHINWEIS: Die Aufnahmen wurden manipuliert. Kritische Datensätze fehlen und müssen manuell rekonstruiert werden.
+                </p>
+            </div>
+        </div>
+
+        <div class="glass-card info-block" style="border-left: 3px solid var(--accent-blue); padding: 20px;">
+            <span class="sector-id" style="letter-spacing: 2px;">📋 OPERATIONS-PROTOKOLL / MISSIONSABLAUF</span>
+
+            <div class="mission-steps" style="margin-top: 15px; display: grid; gap: 15px;">
+
+                <div style="display: flex; align-items: flex-start; gap: 12px;">
+                    <div style="background: var(--accent-blue); color: #000; font-weight: 800; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">01</div>
+                    <p style="margin: 0; font-size: 0.85rem; line-height: 1.4;">
+                        <strong style="color: var(--accent-blue);">DATENABFRAGE:</strong> Geben Sie die Bild-IDs in der <strong>DATABASE</strong> ein, um Koordinaten und Radius zu extrahieren.
+                    </p>
+                </div>
+
+                <div style="display: flex; align-items: flex-start; gap: 12px;">
+                    <div style="background: var(--accent-blue); color: #000; font-weight: 800; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">02</div>
+                    <p style="margin: 0; font-size: 0.85rem; line-height: 1.4;">
+                        <strong style="color: var(--accent-blue);">TRIANGULATION:</strong> Markieren Sie Zielkoordinaten und Suchradius auf Ihrer physischen Karte.
+                    </p>
+                </div>
+
+                <div style="display: flex; align-items: flex-start; gap: 12px;">
+                    <div style="background: var(--accent-blue); color: #000; font-weight: 800; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">03</div>
+                    <p style="margin: 0; font-size: 0.85rem; line-height: 1.4;">
+                        <strong style="color: var(--accent-blue);">RECOGNITION:</strong> Identifizieren Sie den exakten Ort via <strong>Street View</strong> und finden Sie die fehlenden Details.
+                    </p>
+                </div>
+
+                <div style="display: flex; align-items: flex-start; gap: 12px;">
+                    <div style="background: var(--accent-blue); color: #000; font-weight: 800; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">04</div>
+                    <p style="margin: 0; font-size: 0.85rem; line-height: 1.4;">
+                        <strong style="color: var(--accent-blue);">VERIFIKATION:</strong> Speisen Sie die rekonstruierten Daten in das <strong>Terminal</strong> ein.
+                    </p>
+                </div>
+
+            </div>
+
+            <div style="margin-top: 20px; padding-top: 15px; border-top: 1px dashed rgba(0, 136, 255, 0.2); font-family: 'JetBrains Mono'; font-size: 0.75rem;">
+                <p style="color: var(--white-soft); margin-bottom: 5px;">
+                    <span style="color: var(--accent-blue);">[INFO]</span> Jede korrekte Eingabe schaltet weitere Segmente der Fallakte frei.
+                </p>
+                <p style="color: var(--error); font-weight: 700; text-transform: uppercase;">
+                    ⚠️ Absolute Diskretion gewahrt lassen. Fehler werden protokolliert.
+                </p>
+            </div>
+        </div>
+
+        <div id="riddle-stack">
+            <div class="glass-card riddle-card">
+                <div class="riddle-img" style="background-image: url('R1B.png');"></div>
+                <div class="card-content">
+                    <span class="sector-id">📍 Sektor: Manhattan</span>
+                    <h3>Fallabschnitt 1 — Tatort: Finanzinstitut Manhattan</h3>
+                    <p class="description"><strong>Ermittlungsbriefing:</strong><br>Dieses Beweisbild [PICTURE 01] zeigt den Ort des Raubüberfalls auf ein Finanzunternehmen.
+                        Die entscheidende Objektkennung über dem Eingang ist im Bild nicht lesbar.
+                        Ohne diese Angabe kann der Tatort nicht eindeutig im System verankert werden.</p>
+                    <form class="key-form">
+                        <label class="input-label">Agent, übertragen Sie die identifizierte Objektkennung des Tatorts:</label>
+                        <input type="text" placeholder="Eingabe..." autocomplete="off">
+                        <button type="submit" data-key="key1" class="action-btn glow-blue">VERIFIZIEREN</button>
+                        <div class="feedback-message"></div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="glass-card riddle-card">
+                <div class="riddle-img" style="background-image: url('R2B.png');"></div>
+                <div class="card-content">
+                    <span class="sector-id">📍 Sektor: Brooklyn</span>
+                    <h3>Fallabschnitt 2 — Anfahrtsroute der Täter</h3>
+                    <p class="description"><strong>Ermittlungsbriefing:</strong><br>Das Bild [PICTURE 02] dokumentiert einen Abschnitt der Anfahrtsroute zum Tatort.
+                        Die Straßenbezeichnung ist im Bild nicht eindeutig erkennbar.
+                        Die Rekonstruktion dieser Route ist entscheidend für das Bewegungsprofil der Täter.</p>
+                    <form class="key-form">
+                        <label class="input-label">Agent, bestätigen Sie die identifizierte Straße dieser Route:</label>
+                        <input type="text" placeholder="Eingabe..." autocomplete="off">
+                        <button type="submit" data-key="key2" class="action-btn glow-blue">VERIFIZIEREN</button>
+                        <div class="feedback-message"></div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="glass-card riddle-card">
+                <div class="riddle-img" style="background-image: url('R3B.png');"></div>
+                <div class="card-content">
+                    <span class="sector-id">📍 Sektor: Queens</span>
+                    <h3>Fallabschnitt 3 — Geraubter Transporter – Queens</h3>
+                    <p class="description"><strong>Ermittlungsbriefing:</strong><br>Dieses Beweisbild [PICTURE 03] zeigt einen gestohlenen Transporter, der während des Raubüberfalls als Einsatzfahrzeug genutzt wurde.
+                        Die am Fahrzeug angebrachte Kontaktinformation ist im Bild nicht lesbar.
+                        Diese Angabe ist notwendig, um das Fahrzeug im System zurückzuverfolgen und einer verantwortlichen Einheit zuzuordnen.</p>
+                    <form class="key-form">
+                        <label class="input-label">Agent, übertragen Sie die rekonstruierte Kontaktinformation des Fahrzeugs:</label>
+                        <input type="text" placeholder="Eingabe..." autocomplete="off">
+                        <button type="submit" data-key="key3" class="action-btn glow-blue">VERIFIZIEREN</button>
+                        <div class="feedback-message"></div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="glass-card riddle-card">
+                <div class="riddle-img" style="background-image: url('R4B.png');"></div>
+                <div class="card-content">
+                    <span class="sector-id">📍 Sektor: Brooklyn</span>
+                    <h3>Fallabschnitt 4 — Vorübergehender Lager- und Vorbereitungsort</h3>
+                    <p class="description"><strong>Ermittlungsbriefing:</strong><br>Das Bild [PICTURE 04] zeigt einen Standort, der von der Tätergruppe zur Vorbereitung und Zwischenlagerung genutzt wurde.
+                        Die offizielle Bezeichnung des Gebäudes ist im Bild nicht lesbar.
+                        Ohne diese Information kann der logistische Knotenpunkt nicht eindeutig in der Fallakte erfasst werden.</p>
+                    <form class="key-form">
+                        <label class="input-label">Agent, identifizieren Sie den genutzten Lager- und Vorbereitungsstandort:</label>
+                        <input type="text" placeholder="Eingabe..." autocomplete="off">
+                        <button type="submit" data-key="key4" class="action-btn glow-blue">VERIFIZIEREN</button>
+                        <div class="feedback-message"></div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="glass-card riddle-card">
+                <div class="riddle-img" style="background-image: url('R5B.png');"></div>
+                <div class="card-content">
+                    <span class="sector-id">📍 Sektor: Union City, New Jersey</span>
+                    <h3>Fallabschnitt 5 — Planungsbasis der Täter</h3>
+                    <p class="description"><strong>Ermittlungsbriefing:</strong><br>Dieses Beweisbild [PICTURE 05] zeigt die zentrale Planungs- und Rückzugsbasis der Tätergruppe.
+                        Die entscheidende Gebäudekennzeichnung ist im Bild nicht lesbar.
+                        Die Identifikation dieses Standorts ist der letzte fehlende Baustein zur vollständigen Rekonstruktion des Falls.</p>
+                    <form class="key-form">
+                        <label class="input-label">Agent, übermitteln Sie die identifizierte Gebäudenummer der Basis:</label>
+                        <input type="text" placeholder="Eingabe..." autocomplete="off">
+                        <button type="submit" data-key="key5" class="action-btn glow-blue">VERIFIZIEREN</button>
+                        <div class="feedback-message"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="database-view" class="view-section" style="display:none;">
+        <div class="glass-card riddle-card">
+            <div class="card-content">
+                <span class="sector-id">SYSTEM // IMAGE_DATABASE</span>
+                <h3>Metadaten-Abfrage</h3>
+                <div class="db-search">
+                    <input type="text" id="db-id-input" placeholder="ID_numb eingeben..." autocomplete="off">
+                    <button id="decrypt-db-btn" class="action-btn glow-blue">ABFRAGEN</button>
+                    <p id="db-feedback" class="feedback-message" style="display:block; min-height: auto; border:none;"></p>
+                </div>
+                <div id="db-result-display" style="display:none; margin-top: 20px;" class="result-area">
+                    <div class="result-line" style="margin-bottom: 10px; font-family: 'JetBrains Mono'; font-size: 0.8rem;">
+                        <span style="color:var(--accent-blue)">ZIELKOORDINATE:</span> <span id="res-coords"></span>
+                    </div>
+                    <div class="result-line" style="font-family: 'JetBrains Mono'; font-size: 0.8rem;">
+                        <span style="color:var(--accent-blue)">SUCHRADIUS:</span> <span id="res-radius"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<div id="final-analysis-overlay" style="display:none;"></div>
+
+<script src="start_audio.js"></script>
+<script src="logic.js"></script>
+<script src="end_reveal.js"></script>
+</body>
+</html>
